@@ -6,6 +6,7 @@
 <title>Spukis Nordsee Rallye</title>
 
 <style>
+
 body{
   margin:0;
   font-family:Trebuchet MS, sans-serif;
@@ -16,23 +17,25 @@ body{
   max-width:750px;
   margin:40px auto;
   padding:40px;
-  background:#f4e6b5 url('lighthouse.jpg') no-repeat center center;
-  background-size:cover;
+  background:#f4e6b5;
   border:8px solid #8b6f3d;
   border-radius:10px;
   box-shadow:0 0 40px rgba(0,0,0,0.4);
   text-align:center;
 }
 
-.spuki{
-  font-size:70px;
-  animation:float 3s ease-in-out infinite;
+/* weiße Boxen für Rätsel */
+.riddle-box {
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  margin-top:20px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  text-align:left;
 }
 
-@keyframes float{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-  100%{transform:translateY(0)}
+.spuki{
+  font-size:70px;
 }
 
 h2{
@@ -74,7 +77,9 @@ button:hover{
 hr{
   margin:40px 0;
 }
+
 </style>
+
 </head>
 
 <body>
@@ -83,30 +88,33 @@ hr{
 
 <div class="spuki">👻</div>
 
+<div class="riddle-box">
 <h2>👻 Sondervig Rätsel</h2>
 <p>Gebe hier deine Lösung zum Sondervig Rätsel ein, dann weißt du wie es weiter geht</p>
-<input id="answer1">
-<br>
+<input id="answer1"><br>
 <button onclick="check1()">Lösung prüfen</button>
 <div id="msg1" class="message"></div>
+</div>
 
 <hr>
 
+<div class="riddle-box">
 <h2>👻 Die Inschrift</h2>
 <p>Gebe hier deine Lösung zum Inschrift Rätsel ein, dann weißt du wie es weiter geht</p>
-<input id="answer2">
-<br>
+<input id="answer2"><br>
 <button onclick="check2()">Lösung prüfen</button>
 <div id="msg2" class="message"></div>
+</div>
 
 <hr>
 
+<div class="riddle-box">
 <h2>👻 Das Schiff</h2>
 <p>Gebe hier deine Lösung zum Schiff Rätsel ein, dann weißt du wie es weiter geht</p>
-<input id="answer3">
-<br>
+<input id="answer3"><br>
 <button onclick="check3()">Lösung prüfen</button>
 <div id="msg3" class="message"></div>
+</div>
 
 </div>
 
