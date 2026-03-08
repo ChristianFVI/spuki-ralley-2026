@@ -10,15 +10,13 @@ body{
   margin:0;
   font-family:Trebuchet MS, sans-serif;
   background:#d8c79a;
-  overflow-x:hidden;
 }
 
 .map{
-  position:relative;
-  max-width:900px;
+  max-width:750px;
   margin:40px auto;
   padding:40px;
-  background:#f4e6b5 url('https://i.ibb.co/3dS0tSh/treasure-map-bg.jpg') no-repeat center center;
+  background:#f4e6b5 url('lighthouse.jpg') no-repeat center center;
   background-size:cover;
   border:8px solid #8b6f3d;
   border-radius:10px;
@@ -26,90 +24,22 @@ body{
   text-align:center;
 }
 
-/* Spuki Animation */
 .spuki{
-  position:absolute;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%);
   font-size:70px;
-  animation:fly 6s ease-in-out infinite;
-  z-index:10;
+  animation:float 3s ease-in-out infinite;
 }
 
-@keyframes fly{
-  0%{transform:translateX(-50%) translateY(0);}
-  25%{transform:translateX(-60%) translateY(-15px);}
-  50%{transform:translateX(-50%) translateY(0);}
-  75%{transform:translateX(-40%) translateY(-15px);}
-  100%{transform:translateX(-50%) translateY(0);}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
 }
 
-/* Kompass oben rechts */
-.compass{
-  position:absolute;
-  top:20px;
-  right:20px;
-  width:60px;
-  height:60px;
-  border:3px solid #3b2f1d;
-  border-radius:50%;
-  background:#f4e6b5;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  z-index:10;
-  transform:rotate(0deg);
-  animation:rotateCompass 20s linear infinite;
+h2{
+  margin-top:40px;
+  color:#3b2f1d;
 }
 
-@keyframes rotateCompass{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
-}
-
-/* Nordsee-Wellen */
-.waves{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:100px;
-  background: url('https://i.ibb.co/ZcYF2XY/waves.png') repeat-x;
-  background-size:contain;
-  animation:waveAnim 6s linear infinite;
-  z-index:5;
-}
-
-@keyframes waveAnim{
-  0%{background-position-x:0;}
-  100%{background-position-x:1000px;}
-}
-
-/* Stations */
-.station{
-  position:absolute;
-  width:40px;
-  height:40px;
-  background:#ff4f4f;
-  border:3px solid #fff;
-  border-radius:50%;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
-
-/* Pfade */
-.path{
-  position:absolute;
-  border-top:3px dashed #3b2f1d;
-  transform-origin:left top;
-  z-index:1;
-}
-
-/* Input Styling */
 input{
   padding:12px;
   font-size:18px;
@@ -141,15 +71,8 @@ button:hover{
   font-size:18px;
 }
 
-h1{
-  color:#3b2f1d;
-  margin-bottom:15px;
-}
-
-p{
-  max-width:600px;
-  margin:auto;
-  line-height:1.5;
+hr{
+  margin:40px 0;
 }
 </style>
 </head>
@@ -158,37 +81,9 @@ p{
 
 <div class="map">
 
-<!-- Spuki -->
 <div class="spuki">👻</div>
 
-<!-- Kompass -->
-<div class="compass">N</div>
-
-<!-- Wellen -->
-<div class="waves"></div>
-
-<!-- Erklärungstext -->
-<h1>Spuki-Checker</h1>
-<p>
-Hallo liebes Rätselteam. Dies ist die Spuki-Checker-Seite. Während eures Abenteuers kann es passieren, dass ihr eine Lösung für ein Rätsel hier auf dieser Checkerseite prüfen müsst.
-</p>
-<p>
-Wenn dem so ist, findet ihr auf dem Rätsel ein kleines „URL“-Zeichen. Dann schaut ihr hier vorbei und gebt die hoffentlich richtige Lösung ein.
-</p>
-<p style="font-weight:bold;margin-top:10px;">Viel Erfolg!</p>
-
-<!-- Stationen -->
-<div class="station" style="top:250px; left:100px;">1</div>
-<div class="station" style="top:350px; left:250px;">2</div>
-<div class="station" style="top:450px; left:400px;">3</div>
-
-<!-- Pfade zwischen Stationen -->
-<div class="path" style="top:260px; left:120px; width:150px; transform:rotate(15deg);"></div>
-<div class="path" style="top:370px; left:270px; width:150px; transform:rotate(15deg);"></div>
-
-<hr>
-
-<h2>Sondervig Rätsel</h2>
+<h2>👻 Sondervig Rätsel</h2>
 <p>Gebe hier deine Lösung zum Sondervig Rätsel ein, dann weißt du wie es weiter geht</p>
 <input id="answer1">
 <br>
@@ -196,15 +91,17 @@ Wenn dem so ist, findet ihr auf dem Rätsel ein kleines „URL“-Zeichen. Dann 
 <div id="msg1" class="message"></div>
 
 <hr>
-<h2>Die Inschrift der Mole</h2>
-<p>Gebe hier deine Lösung zum Molen Rätsel ein, dann weißt du wie es weiter geht</p>
+
+<h2>👻 Die Inschrift</h2>
+<p>Gebe hier deine Lösung zum Inschrift Rätsel ein, dann weißt du wie es weiter geht</p>
 <input id="answer2">
 <br>
 <button onclick="check2()">Lösung prüfen</button>
 <div id="msg2" class="message"></div>
 
 <hr>
-<h2>Das Schiff</h2>
+
+<h2>👻 Das Schiff</h2>
 <p>Gebe hier deine Lösung zum Schiff Rätsel ein, dann weißt du wie es weiter geht</p>
 <input id="answer3">
 <br>
@@ -215,31 +112,42 @@ Wenn dem so ist, findet ihr auf dem Rätsel ein kleines „URL“-Zeichen. Dann 
 
 <script>
 function check1(){
-let input=document.getElementById("answer1").value.trim();
-let msg=document.getElementById("msg1");
-if(input==="42"){
-msg.style.color="green";
-msg.innerHTML="👻 Richtig! Spuki öffnet den nächsten Hinweis.";
-setTimeout(function(){ window.location.href="erfolg.html"; },1500);
-}else{ msg.style.color="red"; msg.innerHTML="Schade, das ist nicht korrekt"; }
+  let input=document.getElementById("answer1").value.trim();
+  let msg=document.getElementById("msg1");
+  if(input==="42"){
+    msg.style.color="green";
+    msg.innerHTML="👻 Richtig! Spuki öffnet den nächsten Hinweis.";
+    setTimeout(()=>window.location.href="erfolg.html",1500);
+  } else {
+    msg.style.color="red";
+    msg.innerHTML="Schade, das ist nicht korrekt";
+  }
 }
+
 function check2(){
-let input=document.getElementById("answer2").value.trim();
-let msg=document.getElementById("msg2");
-if(input==="P+A"){
-msg.style.color="green";
-msg.innerHTML="👻 Sehr gut! Spuki zeigt euch den nächsten Hinweis.";
-setTimeout(function(){ window.location.href="mole.html"; },1500);
-}else{ msg.style.color="red"; msg.innerHTML="Schade, das ist nicht korrekt"; }
+  let input=document.getElementById("answer2").value.trim();
+  let msg=document.getElementById("msg2");
+  if(input==="P+A"){
+    msg.style.color="green";
+    msg.innerHTML="👻 Sehr gut! Spuki zeigt euch den nächsten Hinweis.";
+    setTimeout(()=>window.location.href="mole.html",1500);
+  } else {
+    msg.style.color="red";
+    msg.innerHTML="Schade, das ist nicht korrekt";
+  }
 }
+
 function check3(){
-let input=document.getElementById("answer3").value.trim();
-let msg=document.getElementById("msg3");
-if(input==="21"){
-msg.style.color="green";
-msg.innerHTML="👻 Super! Spuki ist beeindruckt.";
-setTimeout(function(){ window.location.href="schiff.html"; },1500);
-}else{ msg.style.color="red"; msg.innerHTML="Schade, das ist nicht korrekt"; }
+  let input=document.getElementById("answer3").value.trim();
+  let msg=document.getElementById("msg3");
+  if(input==="21"){
+    msg.style.color="green";
+    msg.innerHTML="👻 Super! Spuki ist beeindruckt.";
+    setTimeout(()=>window.location.href="schiff.html",1500);
+  } else {
+    msg.style.color="red";
+    msg.innerHTML="Schade, das ist nicht korrekt";
+  }
 }
 </script>
 
