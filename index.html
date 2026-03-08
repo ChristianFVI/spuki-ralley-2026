@@ -9,35 +9,25 @@
 body{
   margin:0;
   font-family:Trebuchet MS, sans-serif;
-  background:#d8c79a url('leuchtturm.jpg') no-repeat center bottom;
-  background-size:cover;
+  background:#0b0c1c;
+  color:#f4f4f4;
 }
 
 .map{
   max-width:750px;
   margin:40px auto;
   padding:40px;
-  background:rgba(244,230,181,0.9); /* leicht transparent, damit Leuchtturm sichtbar bleibt */
+  background:#1b1b2f url('lighthouse.jpg') no-repeat center center;
+  background-size:cover;
   border:8px solid #8b6f3d;
   border-radius:10px;
-  box-shadow:0 0 40px rgba(0,0,0,0.4);
+  box-shadow:0 0 40px rgba(0,0,0,0.6);
   text-align:center;
+  position:relative;
 }
 
-/* weiße Boxen für Rätsel */
-.riddle-box {
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  margin-top:20px;
-  box-shadow:0 0 10px rgba(0,0,0,0.2);
-  text-align:left;
-}
-
-h2{
-  margin-top:0;
-  color:#3b2f1d;
-}
+h1,h2{color:#f4f4f4; text-shadow:1px 1px 4px #000;}
+p{line-height:1.5; max-width:600px; margin:auto;}
 
 input{
   padding:12px;
@@ -47,6 +37,8 @@ input{
   text-align:center;
   border-radius:8px;
   border:2px solid #8b6f3d;
+  background:rgba(0,0,0,0.6);
+  color:#f4f4f4;
 }
 
 button{
@@ -60,9 +52,7 @@ button{
   cursor:pointer;
 }
 
-button:hover{
-  background:#2459a6;
-}
+button:hover{background:#2459a6;}
 
 .message{
   margin-top:15px;
@@ -72,42 +62,74 @@ button:hover{
 
 hr{
   margin:40px 0;
+  border:1px dashed #f4f4f4;
+}
+
+/* Geist vor Rätseln */
+.riddle {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:30px;
+  background: rgba(255,255,255,0.9);
+  padding:15px;
+  border-radius:10px;
+  color:#000;
+  flex-direction: column;
+}
+
+.riddle p, .riddle h2 {
+  color:#000;
+  text-shadow:none;
 }
 </style>
-
 </head>
+
 <body>
 
 <div class="map">
 
-<div class="riddle-box">
-<h2>👻 Sondervig Rätsel</h2>
-<p>Gebe hier deine Lösung zum Sondervig Rätsel ein, dann weißt du wie es weiter geht</p>
-<input id="answer1"><br>
-<button onclick="check1()">Lösung prüfen</button>
-<div id="msg1" class="message"></div>
-</div>
+<h1>Spuki-Checker</h1>
+<p>Hallo liebes Rätselteam. Dies ist die Spuki-Checker-Seite. Während eures Abenteuers kann es passieren, dass ihr eine Lösung für ein Rätsel hier auf dieser Checkerseite prüfen müsst.</p>
+<p>Wenn dem so ist, findet ihr auf dem Rätsel ein kleines „URL“-Zeichen. Dann schaut ihr hier vorbei und gebt die hoffentlich richtige Lösung ein.</p>
+<p style="font-weight:bold;margin-top:10px;">Viel Erfolg!</p>
 
 <hr>
 
-<div class="riddle-box">
-<h2>👻 Die Inschrift</h2>
-<p>Gebe hier deine Lösung zum Inschrift Rätsel ein, dann weißt du wie es weiter geht</p>
-<input id="answer2"><br>
-<button onclick="check2()">Lösung prüfen</button>
-<div id="msg2" class="message"></div>
+<div class="riddle">
+  <div>👻</div>
+  <div>
+    <h2>Sondervig Rätsel</h2>
+    <p>Gebe hier deine Lösung zum Sondervig Rätsel ein, dann weißt du wie es weiter geht</p>
+    <input id="answer1">
+    <br>
+    <button onclick="check1()">Lösung prüfen</button>
+    <div id="msg1" class="message"></div>
+  </div>
 </div>
 
-<hr>
-
-<div class="riddle-box">
-<h2>👻 Das Schiff</h2>
-<p>Gebe hier deine Lösung zum Schiff Rätsel ein, dann weißt du wie es weiter geht</p>
-<input id="answer3"><br>
-<button onclick="check3()">Lösung prüfen</button>
-<div id="msg3" class="message"></div>
+<div class="riddle">
+  <div>👻</div>
+  <div>
+    <h2>Die Inschrift</h2>
+    <p>Gebe hier deine Lösung zum Inschrift Rätsel ein, dann weißt du wie es weiter geht</p>
+    <input id="answer2">
+    <br>
+    <button onclick="check2()">Lösung prüfen</button>
+    <div id="msg2" class="message"></div>
+  </div>
 </div>
 
+<div class="riddle">
+  <div>👻</div>
+  <div>
+    <h2>Das Schiff</h2>
+    <p>Gebe hier deine Lösung zum Schiff Rätsel ein, dann weißt du wie es weiter geht</p>
+    <input id="answer3">
+    <br>
+    <button onclick="check3()">Lösung prüfen</button>
+    <div id="msg3" class="message"></div>
+  </div>
 </div>
 
 <script>
@@ -115,7 +137,7 @@ function check1(){
   let input=document.getElementById("answer1").value.trim();
   let msg=document.getElementById("msg1");
   if(input==="42"){
-    msg.style.color="green";
+    msg.style.color="lightgreen";
     msg.innerHTML="👻 Richtig! Spuki öffnet den nächsten Hinweis.";
     setTimeout(()=>window.location.href="erfolg.html",1500);
   } else {
@@ -123,12 +145,11 @@ function check1(){
     msg.innerHTML="Schade, das ist nicht korrekt";
   }
 }
-
 function check2(){
   let input=document.getElementById("answer2").value.trim();
   let msg=document.getElementById("msg2");
   if(input==="P+A"){
-    msg.style.color="green";
+    msg.style.color="lightgreen";
     msg.innerHTML="👻 Sehr gut! Spuki zeigt euch den nächsten Hinweis.";
     setTimeout(()=>window.location.href="mole.html",1500);
   } else {
@@ -136,12 +157,11 @@ function check2(){
     msg.innerHTML="Schade, das ist nicht korrekt";
   }
 }
-
 function check3(){
   let input=document.getElementById("answer3").value.trim();
   let msg=document.getElementById("msg3");
   if(input==="21"){
-    msg.style.color="green";
+    msg.style.color="lightgreen";
     msg.innerHTML="👻 Super! Spuki ist beeindruckt.";
     setTimeout(()=>window.location.href="schiff.html",1500);
   } else {
